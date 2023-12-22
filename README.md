@@ -2,10 +2,10 @@
 Deploying a Data Faker Spring Application at Render
 
 <h2>Tools</h2>
-- H2 (in memory database) <br /> 
-- Insomnia (api debug) <br /> 
-- Swagger (api debug) <br /> 
-- Java 17 <br /> 
+- H2 (in memory database) <br />
+- Insomnia (api debug) <br />
+- Swagger (api debug) <br />
+- Java 17 <br />
 - Docker (To deploy a Dockerfile at Render) <br />
 <div style="display: inline_block" class="flex-container"><br>
         <img align="center" alt="Java" height="5%" width="5%" <img
@@ -35,4 +35,4 @@ Deploying a Data Faker Spring Application at Render
 - <code>docker run my-spring-app</code>
 
 <h2>Class Diagram</h2>
-<img src="https://github.com/JGMelon22/DataFakerDemo/assets/73988556/dbaf8468-60db-4a9c-aece-f0e8f84994b7" width="600" height="300"/> 
+<img src="https://github.com/JGMelon22/DataFakerDemo/assets/73988556/7bcd8539-4b37-4c37-be6c-622a9d125bd9" width="600" height="300"/> 
