@@ -19,6 +19,18 @@ Deploying a Data Faker Spring Application at Render
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
 </div>
 
+<h2>End points</h2>
+<ul>
+  <li>Get All People: <code>/api/person</code></li>
+  <li>Seed Data (100 random people): <code>/api/seed-data</code></li>
+  <li>Add Person: <code>/api/person</code>
+    <ul>
+      <li>Expected body: <code>{ "firstName": "string", "lastName": "string", "address": "string" }</code></li>
+    </ul>
+  </li>
+  <li>Clear Database (delete all people from H2): <code>/api/person</code></li>
+</ul>  
+
 <h2> Image build 🚧</h2>
 - <code>docker build -t my-spring-app</code><br />
 - <code>docker run my-spring-app</code>
