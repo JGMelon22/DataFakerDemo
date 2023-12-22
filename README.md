@@ -6,16 +6,15 @@ Deploying a Data Faker Spring Application at Render
 - Insomnia (api debug) <br /> 
 - Swagger (api debug) <br /> 
 - Java 17 <br /> 
-- Docker (To deploy a Dockerfile at Render) <br /><br />
-
+- Docker (To deploy a Dockerfile at Render) <br />
 <div style="display: inline_block" class="flex-container"><br>
-        <img align="center" alt="Java" height="4%" width="4%" <img
+        <img align="center" alt="Java" height="5%" width="5%" <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-        <img align="center" alt="Spring" height="4%" width="4%" <img
+        <img align="center" alt="Spring" height="5%" width="5%" <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original-wordmark.svg" />
-        <img align="center" alt="Docker" height="4%" width="4%" <img
+        <img align="center" alt="Docker" height="5%" width="5%" <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" />
-	<img align="center" alt="Linux" height="4%" width="4%" <img
+	<img align="center" alt="Linux" height="5%" width="5%" <img
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" />
 </div>
 
