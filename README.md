@@ -21,7 +21,7 @@ Deploying a Data Faker Spring Application at Render
 <h2>End points</h2>
 <ul>
   <li>Get All People: <code>/api/person</code></li>
-  <li>Seed Data (100 random people): <code>/api/seed-data</code></li>
+  <li>Seed Data (100 random people): <code>/api/person/seed-data</code></li>
   <li>Add Person: <code>/api/person</code>
     <ul>
       <li>Expected body: <code>{ "firstName": "string", "lastName": "string", "address": "string" }</code></li>
@@ -35,4 +35,4 @@ Deploying a Data Faker Spring Application at Render
 - <code>docker run my-spring-app</code>
 
 <h2>Class Diagram</h2>
-<img src="https://github.com/JGMelon22/CarteiraClientes/assets/73988556/d0e6c671-1fd6-4811-a261-e177ef9e3abe" width="600" height="300"/> 
+<img src="https://github.com/JGMelon22/DataFakerDemo/assets/73988556/dbaf8468-60db-4a9c-aece-f0e8f84994b7" width="600" height="300"/> 
