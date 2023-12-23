@@ -7,6 +7,7 @@ import net.datafaker.Faker;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,14 +35,17 @@ public class PersonService {
 
     public void seedData() {
         Faker faker = new Faker();
+        List<Person> people = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) { // Generate 10 fake Person records as an example
+        for (int i = 0; i < 100; i++) {
             Person person = new Person();
             person.setFirstName(faker.name().firstName());
             person.setLastName(faker.name().lastName());
             person.setAddress(faker.address().fullAddress());
 
-            personRepository.save(person); // Save the fake Person record to the database
+            people.add(person);
         }
+
+        personRepository.saveAll(people);
     }
 }
