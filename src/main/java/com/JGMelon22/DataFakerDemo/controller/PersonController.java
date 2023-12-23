@@ -27,6 +27,14 @@ public class PersonController {
                 : ResponseEntity.status(HttpStatus.OK).body(people);
     }
 
+    @GetMapping("/person/{id}")
+    public ResponseEntity<Person> getPersonById(@PathVariable(value = "id") Integer id) {
+        Person person = personService.findPersonById(id);
+        return person != null
+                ? ResponseEntity.status(HttpStatus.OK).body(person)
+                : ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
     @PostMapping("/person")
     public ResponseEntity<Person> savePerson(@RequestBody @Valid PersonRecordDto personRecordDto) {
         personService.save(personRecordDto);

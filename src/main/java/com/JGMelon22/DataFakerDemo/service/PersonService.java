@@ -5,11 +5,16 @@ import com.JGMelon22.DataFakerDemo.model.Person;
 import com.JGMelon22.DataFakerDemo.repository.PersonRepository;
 import net.datafaker.Faker;
 import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +31,14 @@ public class PersonService {
                 .sorted(Comparator.comparing(Person::getId).reversed())
                 .limit(100)
                 .collect(Collectors.toList());
+    }
+
+    public Person findPersonById(Integer id) {
+        Optional<Person> person0 = personRepository.findById(id);
+
+        if (person0.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Person with id %o not found!", id));
+        return person0.get();
     }
 
     public void save(PersonRecordDto personRecordDto) {
