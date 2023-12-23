@@ -8,7 +8,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
@@ -19,7 +21,11 @@ public class PersonService {
     }
 
     public List<Person> listAll() {
-        return personRepository.findAll().stream().limit(100).toList();
+        return personRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Person::getId).reversed())
+                .limit(100)
+                .collect(Collectors.toList());
     }
 
     public void save(PersonRecordDto personRecordDto) {
