@@ -35,4 +35,4 @@ Deploying a Data Faker Spring Application at Render
 - <code>docker run my-spring-app</code>
 
 <h2>Class Diagram</h2>
-<img src="https://github.com/JGMelon22/DataFakerDemo/assets/73988556/7bcd8539-4b37-4c37-be6c-622a9d125bd9" width="600" height="300"/> 
+<img src="https://github.com/JGMelon22/DataFakerDemo/assets/73988556/3244674f-15a7-4876-af92-7a61ec6f1cb9" width="600" height="300"/> 
