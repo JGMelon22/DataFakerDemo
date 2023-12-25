@@ -5,6 +5,8 @@ import com.JGMelon22.DataFakerDemo.model.Person;
 import com.JGMelon22.DataFakerDemo.repository.PersonRepository;
 import net.datafaker.Faker;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,7 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "person")
     public Person findPersonById(Integer id) {
         Optional<Person> person0 = personRepository.findById(id);
 
@@ -41,6 +44,7 @@ public class PersonService {
         return person0.get();
     }
 
+    @CacheEvict(value = "person", allEntries = true)
     public void save(PersonRecordDto personRecordDto) {
         Person person = new Person();
         BeanUtils.copyProperties(personRecordDto, person);
