@@ -1,4 +1,5 @@
-FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
+# Build Stage
+FROM maven:3.9.6-eclipse-temurin-21-alpine AS build
 
 WORKDIR /app
 
@@ -6,7 +7,8 @@ COPY . .
 
 RUN mvn clean install
 
-FROM eclipse-temurin:17-alpine
+# Production Stage
+FROM eclipse-temurin:21-alpine
 
 WORKDIR /app
 
