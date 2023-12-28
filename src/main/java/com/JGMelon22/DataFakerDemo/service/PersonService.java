@@ -36,6 +36,7 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
+    @Cacheable(value = "person")
     public Person findPersonById(Integer id) {
         Optional<Person> person0 = personRepository.findById(id);
 
@@ -44,7 +45,7 @@ public class PersonService {
         return person0.get();
     }
 
-    @CacheEvict(value = "people", allEntries = true)
+    @CacheEvict(value = "person", allEntries = true)
     public void save(PersonRecordDto personRecordDto) {
         Person person = new Person();
         BeanUtils.copyProperties(personRecordDto, person);
