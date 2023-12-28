@@ -53,6 +53,7 @@ public class PersonService {
         personRepository.save(person);
     }
 
+    @CacheEvict(value = "people", allEntries = true)
     public void delete() {
         personRepository.deleteAll();
     }
