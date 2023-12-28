@@ -27,7 +27,6 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    @Cacheable(value = "people")
     public List<Person> listAll() {
         return personRepository.findAll()
                 .stream()
@@ -53,7 +52,6 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    @CacheEvict(value = "people", allEntries = true)
     public void delete() {
         personRepository.deleteAll();
     }
