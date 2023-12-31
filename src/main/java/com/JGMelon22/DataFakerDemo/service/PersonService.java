@@ -52,6 +52,17 @@ public class PersonService {
         personRepository.save(person);
     }
 
+    public Person updatePerson(Integer id, PersonRecordDto personRecordDto) {
+        Optional<Person> person0 = personRepository.findById(id);
+        if(person0.isPresent())
+            person0.get();
+
+        Person person = person0.get();
+        BeanUtils.copyProperties(personRecordDto, person);
+
+        return personRepository.save(person);
+    }
+
     public void delete() {
         personRepository.deleteAll();
     }

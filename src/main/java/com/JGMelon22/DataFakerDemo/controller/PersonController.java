@@ -41,6 +41,16 @@ public class PersonController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PatchMapping("/person/{id}")
+    public ResponseEntity<Person> updatePerson(@PathVariable(value = "id") Integer id,
+                                               @RequestBody @Valid PersonRecordDto personRecordDto) {
+        Person person = personService.findPersonById(id);
+        return person != null
+                ? ResponseEntity.status(HttpStatus.OK).body(personService.updatePerson(id, personRecordDto))
+                : ResponseEntity.status((HttpStatus.NOT_FOUND)).build();
+    }
+
+
     @PostMapping("/person/seed-data")
     public ResponseEntity<Person> seedPersonData() {
         personService.seedData();
