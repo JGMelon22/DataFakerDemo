@@ -31,7 +31,7 @@ Deploying a Data Faker Spring Application at Render
 </ul>  
 
 <h2> Image build 🚧</h2>
-- <code>docker build -t my-spring-app</code><br />
+- <code>docker build --rm -t my-spring-app .</code><br />
 - <code>docker run my-spring-app</code>
 
 <h2>Class Diagram</h2>
