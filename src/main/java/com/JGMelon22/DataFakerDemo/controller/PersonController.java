@@ -32,7 +32,7 @@ public class PersonController {
         Person person = personService.findPersonById(id);
         return person != null
                 ? ResponseEntity.status(HttpStatus.OK).body(person)
-                : ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @PostMapping("/person")
