@@ -1,7 +1,6 @@
 package com.JGMelon22.DataFakerDemo.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.util.Objects;
 
