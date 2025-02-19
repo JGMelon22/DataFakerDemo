@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/api")
@@ -20,36 +21,35 @@ public class PersonController {
     }
 
     @GetMapping("/person")
-    public ResponseEntity<List<Person>> getAllPeople() {
-        List<Person> people = personService.listAll();
-        return people.isEmpty()
-                ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
-                : ResponseEntity.status(HttpStatus.OK).body(people);
+    public CompletableFuture<ResponseEntity<List<Person>>> getAllPeople() {
+        return personService.listAll()
+                .thenApply(people -> people.isEmpty()
+                        ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
+                        : ResponseEntity.status(HttpStatus.OK).body(people));
     }
 
     @GetMapping("/person/{id}")
-    public ResponseEntity<Person> getPersonById(@PathVariable(value = "id") Integer id) {
-        Person person = personService.findPersonById(id);
-        return person != null
-                ? ResponseEntity.status(HttpStatus.OK).body(person)
-                : ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public CompletableFuture<ResponseEntity<Person>> getPersonById(@PathVariable(value = "id") Integer id) {
+        return personService.findPersonById(id)
+                .thenApply(person -> ResponseEntity.status(HttpStatus.OK).body(person))
+                .exceptionally(ex -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     @PostMapping("/person")
-    public ResponseEntity<Person> savePerson(@RequestBody @Valid PersonRecordDto personRecordDto) {
-        personService.save(personRecordDto);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public CompletableFuture<ResponseEntity<Void>> savePerson(@RequestBody @Valid PersonRecordDto personRecordDto) {
+        return personService.save(personRecordDto)
+                .thenApply(result -> ResponseEntity.status(HttpStatus.CREATED).build());
     }
 
     @PostMapping("/person/seed-data")
-    public ResponseEntity<Person> seedPersonData() {
-        personService.seedData();
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public CompletableFuture<ResponseEntity<Void>> seedPersonData() {
+        return personService.seedData()
+                .thenApply(result -> ResponseEntity.status(HttpStatus.CREATED).build());
     }
 
     @DeleteMapping("/person")
-    public ResponseEntity<Person> deletePerson() {
-        personService.delete();
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    public CompletableFuture<ResponseEntity<Void>> deletePerson() {
+        return personService.delete()
+                .thenApply(result -> ResponseEntity.status(HttpStatus.NO_CONTENT).build());
     }
 }
